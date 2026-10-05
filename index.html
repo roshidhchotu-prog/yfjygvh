@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Hospital Appointment System</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { background: #f4f8fb; color: #1f2937; }
+    header {
+      background: #0b6e99; color: white; padding: 18px 7%;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    header h1 { font-size: 24px; }
+    nav a { color: white; text-decoration: none; margin-left: 20px; }
+    .hero {
+      padding: 70px 7%; text-align: center;
+      background: linear-gradient(135deg, #e5f6ff, #ffffff);
+    }
+    .hero h2 { font-size: 40px; color: #075985; margin-bottom: 15px; }
+    .hero p { max-width: 650px; margin: auto; line-height: 1.6; }
+    .btn {
+      display: inline-block; margin-top: 25px; padding: 12px 22px;
+      background: #0b6e99; color: white; border: none; border-radius: 7px;
+      cursor: pointer; text-decoration: none;
+    }
+    .section { padding: 45px 7%; }
+    .section h2 { text-align: center; margin-bottom: 28px; color: #075985; }
+    .cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white; padding: 25px; border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    }
+    .card h3 { color: #0b6e99; margin-bottom: 10px; }
+    .appointment {
+      max-width: 650px; margin: auto; background: white; padding: 28px;
+      border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    }
+    input, select {
+      width: 100%; padding: 12px; margin: 8px 0 15px;
+      border: 1px solid #ccd6dd; border-radius: 6px;
+    }
+    footer { background: #075985; color: white; text-align: center; padding: 20px; }
+    #message { margin-top: 15px; font-weight: bold; color: #15803d; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🏥 MediCare</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#doctors">Doctors</a>
+      <a href="#appointment">Appointment</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h2>Smart Hospital Appointment System</h2>
+    <p>
+      Find doctors, check availability and book hospital appointments quickly
+      through one simple platform.
+    </p>
+    <a href="#appointment" class="btn">Book Appointment</a>
+  </section>
+
+  <section class="section" id="doctors">
+    <h2>Our Services</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>👨‍⚕️ Find Doctors</h3>
+        <p>Search doctors based on their specialization and availability.</p>
+      </div>
+      <div class="card">
+        <h3>📅 Easy Booking</h3>
+        <p>Select an available time slot and book your appointment online.</p>
+      </div>
+      <div class="card">
+        <h3>📊 Appointment Tracking</h3>
+        <p>View upcoming and previous appointments in one place.</p>
+      </div>
+      <div class="card">
+        <h3>🚨 Emergency Support</h3>
+        <p>Quickly identify emergency services and hospital contact options.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="appointment">
+    <h2>Book an Appointment</h2>
+    <div class="appointment">
+      <form id="appointmentForm">
+        <label>Patient Name</label>
+        <input type="text" id="name" placeholder="Enter patient name" required>
+
+        <label>Department</label>
+        <select id="department" required>
+          <option value="">Select department</option>
+          <option>Cardiology</option>
+          <option>Dermatology</option>
+          <option>General Medicine</option>
+          <option>Orthopedics</option>
+          <option>Pediatrics</option>
+        </select>
+
+        <label>Doctor</label>
+        <select id="doctor" required>
+          <option value="">Select doctor</option>
+          <option>Dr. Ravi Kumar</option>
+          <option>Dr. Priya Sharma</option>
+          <option>Dr. Arjun Reddy</option>
+          <option>Dr. Sneha Rao</option>
+        </select>
+
+        <label>Appointment Date</label>
+        <input type="date" id="date" required>
+
+        <label>Time</label>
+        <input type="time" id="time" required>
+
+        <button class="btn" type="submit">Confirm Appointment</button>
+        <div id="message"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 MediCare | Smart Hospital Appointment System</p>
+  </footer>
+
+  <script>
+    document.getElementById("appointmentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const doctor = document.getElementById("doctor").value;
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+
+      document.getElementById("message").textContent =
+        `Appointment confirmed for ${name} with ${doctor} on ${date} at ${time}.`;
+    });
+  </script>
+</body>
+</html>
